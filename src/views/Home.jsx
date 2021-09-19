@@ -3,23 +3,31 @@ import Countries from '../components/Countries';
 import SearchCountry from '../components/SearchCountry';
 import SearchCountryGrid from '../components/SearchCountryGrid';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
+
 const Home = () => {
 	const [searchCountry, setSearchCountry] = useState(['']);
 
 	return (
 		<>
-			<div className="header container">
-				<h1 className="header__title">Countries</h1>
-				<SearchCountry setSearchCountry={setSearchCountry} />
+			<div className="home">
+				<div className="header">
+					<h1 className="header__title">Countries</h1>
+					<FontAwesomeIcon className="header__icon" icon={faGlobeAmericas} />
+					<span className="header__title--app">App</span>
+
+					<SearchCountry setSearchCountry={setSearchCountry} />
+				</div>
+
+				<ol>
+					{searchCountry.map(country => (
+						<SearchCountryGrid key={country} country={country} />
+					))}
+				</ol>
+
+				<Countries />
 			</div>
-
-			<ol>
-				{searchCountry.map(country => (
-					<SearchCountryGrid key={country} country={country} />
-				))}
-			</ol>
-
-			<Countries />
 		</>
 	);
 };

@@ -1,40 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import FetchCountryName from '../helpers/FetchCountryName';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import Loader from '../hooks/Loader';
+import Loader from '../hooks/Loader';
+import useLoader from '../hooks/useLoader';
 
 const SearchCountryGrid = ({ country }) => {
-	const [flags, setFlags] = useState([]);
-	const [error, setError] = useState(false);
+	const { data, loading } = useLoader(country);
+	const error = data.status;
 
-	useEffect(() => {
-		if (country.trim().length > 2) {
-			try {
-				FetchCountryName(country).then(result => {
-					// console.log(result);
-					result.status ? setError(result.message) : setFlags(result);
-				});
-			} catch (error) {
-				console.error(error);
-			}
-		}
-	}, [country]);
+	const [display, setDisplay] = useState('block');
 
+	const handleClose = () => {
+		setDisplay('none');
+	};
+	console.log(display);
 	return (
 		<>
+			{loading && <Loader />}
+			{country && (
+				<button
+					className="card__closeBtn"
+					onClick={handleClose}
+					style={{ display: `${display}` }}
+				>
+					Close
+				</button>
+			)}
 			<div>
 				{error ? (
-					<div className="error container">
-						<h2 className="error__text">Country Not Found</h2>
+					<div>
+						<div className="error container animate__animated animate__bounceInLeft">
+							<h2 className="error__text">Country Not Found</h2>
+						</div>
 					</div>
 				) : (
-					flags.map(({ id, flag, name }) => (
-						<div className="card" key={id}>
-							<h3 className="card__name">{name}</h3>
-							<img className="card__img" src={flag} alt={name} />
-							<Link className="card__details" to={`/details/${name}`}>
-								more details
-							</Link>
+					data.map(({ id, flag, name }) => (
+						<div key={id} style={{ display: `${display}` }}>
+							<div className="card loading animate__animated animate__bounceInLeft">
+								<h3 className="card__name">{name}</h3>
+								<img className="card__img" src={flag} alt={name} />
+								<Link className="card__details-btn" to={`/details/${name}`}>
+									more details
+								</Link>
+							</div>
 						</div>
 					))
 				)}

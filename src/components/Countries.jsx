@@ -1,27 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import useFetchCountries from '../hooks/useFetchCountries';
 import CountryGrid from './CountryGrid';
-
-const URL = 'https://restcountries.eu/rest/v2/all';
+import Preloader from '../hooks/Preloader';
 
 const Countries = () => {
-	const [countries, setCountries] = useState([]);
-
-	try {
-		const fetchCountryData = async () => {
-			const response = await fetch(URL);
-			const countries = await response.json();
-			// console.log(countries);
-			setCountries(countries);
-		};
-		useEffect(() => {
-			fetchCountryData();
-		}, []);
-	} catch (error) {
-		console.error(error);
-	}
+	const { countries, loading } = useFetchCountries();
 
 	return (
 		<>
+			{loading && <Preloader />}
 			<section className="grid container">
 				{countries.map(country => {
 					return <CountryGrid key={country.numericCode} {...country} />;

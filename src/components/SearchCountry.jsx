@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 const SearchCountry = ({ setSearchCountry }) => {
 	const [inputValue, setInputValue] = useState('');
 
-	//mostrar o ocultar
-
 	const handleInputChange = e => {
 		setInputValue(e.target.value);
 	};
