@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Preloader from '../hooks/Preloader';
 import useWeather from '../hooks/useWeather';
 import useWeatherIcons from '../hooks/useWeatherIcons';
 import Clouds from '../assets/video/Clouds.mp4';
 import Error from '../helpers/Error';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 const Weather = () => {
 	const { capital } = useParams();
@@ -71,6 +74,9 @@ const Weather = () => {
 								<i className={icon}></i>
 							</div>
 							<h3 className="weather__main">{weather.description}</h3>
+							<Link to={'/'}>
+								<FontAwesomeIcon className="home-btn" icon={faHome} />
+							</Link>
 						</div>
 					</section>
 				</div>

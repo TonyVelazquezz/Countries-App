@@ -1,32 +1,36 @@
 import { useState, useEffect } from 'react';
 
-const useFetchCountries = () => {
-	const [state, setState] = useState({
-		countries: [],
-		loading: null,
-	});
+const useFetchCountries = (pageNumber, setHasMore) => {
+	const [state, setState] = useState([]);
 
-	try {
-		const URL = 'https://restcountries.eu/rest/v2/all';
-		const fetchCountryData = async () => {
-			const response = await fetch(URL);
-			const result = await response.json();
-			setState({
-				countries: result,
-				loading: false,
-			});
-		};
+	useEffect(() => {
+		const URL = `https://restcountries.eu/rest/v2/all`;
 
-		useEffect(() => {
-			setState({
-				countries: [],
-				loading: true,
-			});
+		try {
+			const countriesPerPage = 12;
+
+			const fetchCountryData = async () => {
+				const response = await fetch(URL);
+				const result = await response.json();
+
+				//Pagination
+				const indexCountries = pageNumber * countriesPerPage;
+				const showCountries = result.slice(
+					indexCountries - countriesPerPage,
+					indexCountries
+				);
+
+				const totalPages = Math.ceil(result.length / countriesPerPage);
+
+				// console.log(showCountries);
+				setState(prevCountries => prevCountries.concat(showCountries));
+				setHasMore(pageNumber < totalPages);
+			};
 			fetchCountryData();
-		}, []); // eslint-disable-line react-hooks/exhaustive-deps
-	} catch (error) {
-		console.error(error);
-	}
+		} catch (error) {
+			console.error(error);
+		}
+	}, [pageNumber, setHasMore]);
 
 	return state;
 };

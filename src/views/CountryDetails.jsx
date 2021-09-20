@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import Error from '../helpers/Error';
 import Preloader from '../hooks/Preloader';
 import useLoader from './../hooks/useLoader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faCloud } from '@fortawesome/free-solid-svg-icons';
 
 const CountryDetails = () => {
 	const { country } = useParams();
@@ -59,9 +61,13 @@ const CountryDetails = () => {
 											className="card__details-btn"
 											to={`/details/weather/${capital}`}
 										>
+											<FontAwesomeIcon className="card__icon" icon={faCloud} />
 											Get the Weather of {`${capital}`}
 										</Link>
 									)}
+									<Link to={'/'}>
+										<FontAwesomeIcon className="home-btn" icon={faHome} />
+									</Link>
 								</div>
 							</div>
 						</div>
