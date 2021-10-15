@@ -8,7 +8,6 @@ import Clouds from '../assets/video/Clouds.mp4';
 import Error from '../helpers/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
-import background from '../assets/img/background.jpg';
 
 const Weather = () => {
 	const { capital } = useParams();
