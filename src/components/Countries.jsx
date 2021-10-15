@@ -3,11 +3,13 @@ import useFetchCountries from '../hooks/useFetchCountries';
 import CountryGrid from './CountryGrid';
 import Preloader from '../hooks/Preloader';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { v4 as uuidv4 } from 'uuid';
 
 const Countries = () => {
 	const [pageNumber, setPageNumber] = useState(1);
 	const [hasMore, setHasMore] = useState(true);
 	const countries = useFetchCountries(pageNumber, setHasMore);
+	// console.log(countries);
 
 	return (
 		<>
@@ -19,7 +21,7 @@ const Countries = () => {
 			>
 				<section className="grid container">
 					{countries.map(country => {
-						return <CountryGrid key={country.numericCode} {...country} />;
+						return <CountryGrid key={uuidv4()} {...country} />;
 					})}
 				</section>
 			</InfiniteScroll>

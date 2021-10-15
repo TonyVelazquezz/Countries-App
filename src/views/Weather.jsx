@@ -8,6 +8,7 @@ import Clouds from '../assets/video/Clouds.mp4';
 import Error from '../helpers/Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import background from '../assets/img/background.jpg';
 
 const Weather = () => {
 	const { capital } = useParams();
@@ -60,12 +61,14 @@ const Weather = () => {
 					<video className="weather__video" autoPlay loop muted>
 						<source src={Clouds} type="video/mp4" />
 					</video>
+
 					<section className="weather__section container">
 						<div className="weather__location-box">
 							<h2 className="weather__location">{capital}</h2>
 							<h2 className="weather__country">{weather.country}</h2>
 							<h3 className="weather__date">{date(new Date())}</h3>
 						</div>
+
 						<div className="weather__data-box">
 							<h2 className="weather__temperature">{`${Math.round(
 								weather.temperature
@@ -74,8 +77,9 @@ const Weather = () => {
 								<i className={icon}></i>
 							</div>
 							<h3 className="weather__main">{weather.description}</h3>
+
 							<Link to={'/'}>
-								<FontAwesomeIcon className="home-btn" icon={faHome} />
+								<FontAwesomeIcon className="home-btn--weather" icon={faHome} />
 							</Link>
 						</div>
 					</section>

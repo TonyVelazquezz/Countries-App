@@ -4,17 +4,20 @@ import Loader from '../hooks/Loader';
 import useLoader from '../hooks/useLoader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { v4 as uuidv4 } from 'uuid';
 
 const SearchCountryGrid = ({ country }) => {
 	const { data, loading } = useLoader(country);
 	const error = data.status;
+
+	// console.log(data);
 
 	const [display, setDisplay] = useState('block');
 
 	const handleClose = () => {
 		setDisplay('none');
 	};
-	console.log(display);
+	// console.log(display);
 
 	return (
 		<>
@@ -27,8 +30,8 @@ const SearchCountryGrid = ({ country }) => {
 						</div>
 					</div>
 				) : (
-					data.map(({ id, flag, name }) => (
-						<div key={id} style={{ display: `${display}` }}>
+					data.map(({ flag, name }) => (
+						<div key={uuidv4()} style={{ display: `${display}` }}>
 							<div className="card container loading animate__animated animate__bounceInLeft">
 								<h3 className="card__name">{name}</h3>
 								<img className="card__img" src={flag} alt={name} />

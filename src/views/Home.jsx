@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Countries from '../components/Countries';
 import SearchCountry from '../components/SearchCountry';
 import SearchCountryGrid from '../components/SearchCountryGrid';
+import background from '../assets/img/background.jpg';
 
-//FontAwesome
+//Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,21 +13,25 @@ const Home = () => {
 
 	return (
 		<div className="home">
-			<div className="header">
-				<h1 className="header__title">Countries</h1>
-				<FontAwesomeIcon className="header__icon" icon={faGlobeAmericas} />
-				<span className="header__title--app">App</span>
+			<section className="home__header-section">
+				<img src={background} alt="background" className="home__background" />
 
-				<SearchCountry setSearchCountry={setSearchCountry} />
-			</div>
+				<div className="home__header">
+					<h1 className="home__header-title">Countries</h1>
+					<FontAwesomeIcon className="home__header-icon" icon={faGlobeAmericas} />
+					<span className="home__header-title--app">App</span>
 
-			<>
-				{searchCountry.map(country => (
-					<SearchCountryGrid key={country} country={country} />
-				))}
-			</>
+					<SearchCountry setSearchCountry={setSearchCountry} />
+				</div>
 
-			<Countries />
+				<>
+					{searchCountry.map(country => (
+						<SearchCountryGrid key={country} country={country} />
+					))}
+				</>
+
+				<Countries />
+			</section>
 		</div>
 	);
 };

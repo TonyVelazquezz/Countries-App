@@ -1,8 +1,6 @@
 //
 const FetchCountryName = async country => {
-	const URL = `https://restcountries.eu/rest/v2/name/${encodeURI(
-		country
-	)}?fullText=true`;
+	const URL = `https://restcountries.com/v3.1/name/${country}?fullText=true`;
 
 	const response = await fetch(URL);
 	const data = await response.json();
@@ -11,16 +9,12 @@ const FetchCountryName = async country => {
 	} else {
 		const dataCountry = data.map(card => {
 			return {
-				callingCode: card.callingCodes[0],
-				capital: card.capital,
-				code2: card.alpha2Code,
-				code3: card.alpha3Code,
-				flag: card.flag,
-				id: card.numericCode,
-				language: card.languages[0].name,
-				name: card.name,
-				region: card.region,
-				subRegion: card.subregion,
+				capital: card.capital[0],
+				flag: card.flags.png,
+				name: card.name.common,
+				continent: card.continents[0],
+				currency: Object.entries(card.currencies)[0],
+				language: Object.entries(card.languages)[0][1],
 			};
 		});
 		// console.log(dataCountry);

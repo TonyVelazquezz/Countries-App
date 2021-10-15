@@ -4,7 +4,7 @@ const useFetchCountries = (pageNumber, setHasMore) => {
 	const [state, setState] = useState([]);
 
 	useEffect(() => {
-		const URL = `https://restcountries.eu/rest/v2/all`;
+		const URL = `https://restcountries.com/v3.1/all`;
 
 		try {
 			const countriesPerPage = 12;
@@ -22,7 +22,6 @@ const useFetchCountries = (pageNumber, setHasMore) => {
 
 				const totalPages = Math.ceil(result.length / countriesPerPage);
 
-				// console.log(showCountries);
 				setState(prevCountries => prevCountries.concat(showCountries));
 				setHasMore(pageNumber < totalPages);
 			};
