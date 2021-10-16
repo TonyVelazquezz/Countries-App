@@ -58,6 +58,7 @@ ol {
 	font-size: 3rem;
 	margin: 1rem auto;
 	text-align: center;
+	transition: all 0.3s ease;
 }
 .home-btn--weather {
 	color: white;
@@ -65,6 +66,7 @@ ol {
 	font-size: 4rem;
 	margin: 1rem auto;
 	text-align: center;
+	transition: all 0.3s ease;
 }
 .home-btn--weather:hover {
 	text-shadow: 0 0 0.2rem 0.2rem var(--primary-color);
@@ -81,8 +83,6 @@ ol {
 .home-link:hover {
 	box-shadow: 0 0 0.2rem 0.2rem var(--primary-color);
 	background-color: var(--primary-color);
-}
-.home-btn:hover {
 }
 .container {
 	max-width: 120rem;
@@ -414,7 +414,7 @@ ol {
 	background-image: linear-gradient(to bottom, #00000040, #000000bf);
 	display: flex;
 	flex-direction: column;
-	gap: 3rem;
+	gap: 2.5rem;
 	justify-content: center;
 	min-height: 100vh;
 	min-width: 100%;
@@ -423,7 +423,7 @@ ol {
 	padding: 2rem;
 	background: #00000080;
 	border-radius: 2rem;
-	width: 70%;
+	width: 50%;
 }
 
 @media (max-width: 576px) {
@@ -452,7 +452,7 @@ ol {
 	padding: 2rem;
 	background: #00000080;
 	border-radius: 2rem;
-	width: 70%;
+	width: 50%;
 }
 @media (max-width: 576px) {
 	.weather__data-box {

@@ -51,7 +51,7 @@ const useWeatherIcons = id => {
 		}
 	}, [id]);
 
-	console.log(state);
+	// console.log(state);
 	return state;
 };
 
