@@ -10,14 +10,11 @@ const SearchCountryGrid = ({ country }) => {
 	const { data, loading } = useLoader(country);
 	const error = data.status;
 
-	// console.log(data);
-
 	const [display, setDisplay] = useState('block');
 
 	const handleClose = () => {
 		setDisplay('none');
 	};
-	// console.log(display);
 
 	return (
 		<>

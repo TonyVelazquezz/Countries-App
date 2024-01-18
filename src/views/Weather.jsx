@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Preloader from '../hooks/Preloader';
 import useWeather from '../hooks/useWeather';
 import useWeatherIcons from '../hooks/useWeatherIcons';
@@ -53,6 +52,7 @@ const Weather = () => {
 	return (
 		<>
 			{loading && <Preloader />}
+
 			{error ? (
 				<Error />
 			) : (

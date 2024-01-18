@@ -1,3 +1,24 @@
 {
-	"cSpell.words": ["fontawesome", "fortawesome", "minmax", "openweathermap"]
+	"cSpell.words": ["fontawesome", "fortawesome", "minmax", "openweathermap"],
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#1c62ba",
+		"activityBar.activeBorder": "#ee90bb",
+		"activityBar.background": "#1c62ba",
+		"activityBar.foreground": "#e7e7e7",
+		"activityBar.inactiveForeground": "#e7e7e799",
+		"activityBarBadge.background": "#ea74a9",
+		"activityBarBadge.foreground": "#15202b",
+		"sash.hoverBorder": "#1c62ba",
+		"statusBar.background": "#154b8e",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#1c62ba",
+		"statusBarItem.remoteBackground": "#154b8e",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"titleBar.activeBackground": "#154b8e",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#154b8e99",
+		"titleBar.inactiveForeground": "#e7e7e799",
+		"commandCenter.border": "#e7e7e799"
+	},
+	"peacock.color": "#154b8e"
 }

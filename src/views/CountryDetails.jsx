@@ -7,12 +7,10 @@ import useLoader from './../hooks/useLoader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faCloud } from '@fortawesome/free-solid-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
-import background from '../assets/img/background.jpg';
 
 const CountryDetails = () => {
 	const { country } = useParams();
 	const { data, loading } = useLoader(country);
-	// console.log(data);
 	const error = data.status;
 
 	return (
@@ -22,17 +20,8 @@ const CountryDetails = () => {
 				<Error />
 			) : (
 				data.map(({ flag, name, continent, capital, currency, language }) => (
-					<div
-						className="card-details animate__animated animate__fadeIn animate__slow"
-						key={uuidv4}
-					>
+					<div className="card-details animate__animated animate__fadeIn animate__slow" key={uuidv4}>
 						<section className="card-details__more-details">
-							<img
-								src={background}
-								alt="background"
-								className="card-details__background"
-							/>
-
 							<div className="card-details__img-container">
 								<img className="card-details__img" src={flag} alt={name} />
 							</div>
